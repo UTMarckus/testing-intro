@@ -14,7 +14,15 @@ function addToCart(cart, item, quantity) {
   return cart;
 }
 
-function changeQuantity() { return notImplemented(); }
+function changeQuantity(cart, id, quantity) {
+  if (!cart.some(el => el.id === id)) return cart;
+
+  if (quantity <= 0 || cart.find(el => el.id === id).stock < quantity) throw new RangeError();
+
+  cart.find(el => el.id === id).quantity = quantity;
+
+  return cart;
+}
 
 function removeFromCart() { return notImplemented(); }
 

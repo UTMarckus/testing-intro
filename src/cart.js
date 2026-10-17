@@ -24,9 +24,15 @@ function changeQuantity(cart, id, quantity) {
   return cart;
 }
 
-function removeFromCart() { return notImplemented(); }
+function removeFromCart(cart, id) {
+  cart = cart.filter(el => el.id !== id);
 
-function calculateCartSubtotal() { return notImplemented(); }
+  return cart;
+}
+
+function calculateCartSubtotal(cart) {
+  return cart.reduce((acc, el) => acc + el.price * el.quantity, 0);
+}
 
 function calculateOrderTotal() { return notImplemented(); }
 
